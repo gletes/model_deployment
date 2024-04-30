@@ -21,11 +21,11 @@ def main():
     gender = st.radio("Gender",["Male","Female"])
     age = st.number_input("Age",0,100)
     tenure = st.number_input("Tenure (in years)",0,100)
-    balance = st.number_input("Balance",min_value=0)
-    num_products = st.slider("Number of products",min_value=0,value=1)
+    balance = st.number_input("Balance",0,10000000)
+    num_products = st.number_input("Number of products",0,100)
     cc = st.radio("Do you have a credit card?",["Yes","No"])
     active = st.radio("Are you an active member?",["Yes","No"])
-    salary = st.number_input("Estimated salary",min_value=0)
+    salary = st.number_input("Estimated salary",0,10000000)
 
     data = {'Credit Score': float(creditScore), 'Geography': geo, 'Gender': gender, 'Age': int(age),
            'Tenure': int(tenure), 'Balance': float(balance), 'Number of Products': int(num_products),
