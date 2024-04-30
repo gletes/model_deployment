@@ -37,8 +37,8 @@ def main():
     
 
     df = df.replace(gender_encoder)
+
     cat = df[['Geography']]
-    print(df)
     cat_enc=pd.DataFrame(oneHot_encoder.transform(cat).toarray(),columns=oneHot_encoder.get_feature_names_out())
     df = df.reset_index(drop=True)
     df = pd.concat([df,cat_enc], axis=1)
@@ -47,20 +47,15 @@ def main():
     num = ['Credit Score', 'Balance', 'Estimated Salary']
     for col in num:
         df[col] = scaler.transform(df[[col]])
-    print(df)
+
     if st.button('Make Prediction'):
-        features=df      
-        result = make_prediction(features)
-        if result == 1:
+        prediction = model.predict(df)[0]
+        if prediction == 1:
             output = "CHURN"
         else:
             output = "NOT CHURN"
         st.success(f'The prediction is: {output}')
 
-def make_prediction(features):
-    input_array = np.array(features).reshape(1, -1)
-    prediction = model.predict(input_array)
-    return prediction[0]
 
 if __name__ == '__main__':
     main()
