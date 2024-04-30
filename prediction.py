@@ -53,13 +53,19 @@ def main():
         if not all_filled:
             st.error("Please fill in all fields before submitting.")
             return
-        prediction = model.predict(df)[0]
-        if prediction == 1:
+        features = df
+        result = make_prediction(features)
+        # prediction = model.predict(df)[0]
+        if result == 1:
             output = "CHURN"
         else:
             output = "NOT CHURN"
         st.success(f'The prediction is: {output}')
 
+    def make_prediction(features):
+        input_array = np.array(features).reshape(1, -1)
+        prediction = model.predict(input_array)
+        return prediction[0]
 
 if __name__ == '__main__':
     main()
