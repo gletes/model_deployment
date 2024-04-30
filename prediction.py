@@ -54,10 +54,10 @@ def main():
         return prediction[0]
 
     if st.button('Make Prediction'):
-        all_filled = creditScore and geo and gender and age and tenure and balance and num_products and cc and active and salary
-        if not all_filled:
-            st.error("Please fill in all fields before submitting.")
-            return
+        # all_filled = creditScore and geo and gender and age and tenure and balance and num_products and cc and active and salary
+        # if not all_filled:
+        #     st.error("Please don't leave anything empty.")
+        #     return
         features = df
         result = make_prediction(features)
         if result == 1:
