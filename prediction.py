@@ -3,7 +3,7 @@ import pickle as pkl
 import pandas as pd
 import numpy as np
 
-with open('RandomForest.pkl', "rb") as model_file:
+with open('xgboost.pkl', "rb") as model_file:
     model = pkl.load(model_file)
 with open('oneHot_encode.pkl', "rb") as oneHot_file:
     oneHot_encoder = pkl.load(oneHot_file)
