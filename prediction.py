@@ -49,6 +49,10 @@ def main():
         df[col] = scaler.transform(df[[col]])
 
     if st.button('Make Prediction'):
+        all_filled = creditScore and geo and gender and age and tenure and balance and num_products and cc and active and salary
+        if not all_filled:
+            st.error("Please fill in all fields before submitting.")
+            return
         prediction = model.predict(df)[0]
         if prediction == 1:
             output = "CHURN"
