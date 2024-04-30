@@ -1,7 +1,7 @@
 import streamlit as st
 import pickle as pkl
-import numpy as np
 import pandas as pd
+
 
 with open('RandomForest.pkl', "rb") as model_file:
     model = pkl.load(model_file)
