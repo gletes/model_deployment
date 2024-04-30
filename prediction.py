@@ -48,6 +48,11 @@ def main():
     for col in num:
         df[col] = scaler.transform(df[[col]])
 
+    def make_prediction(features):
+        input_array = np.array(features).reshape(1, -1)
+        prediction = model.predict(input_array)
+        return prediction[0]
+
     if st.button('Make Prediction'):
         all_filled = creditScore and geo and gender and age and tenure and balance and num_products and cc and active and salary
         if not all_filled:
@@ -62,10 +67,7 @@ def main():
             output = "NOT CHURN"
         st.success(f'The prediction is: {output}')
 
-    def make_prediction(features):
-        input_array = np.array(features).reshape(1, -1)
-        prediction = model.predict(input_array)
-        return prediction[0]
+    
 
 if __name__ == '__main__':
     main()
