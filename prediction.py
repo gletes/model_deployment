@@ -60,7 +60,6 @@ def main():
             return
         features = df
         result = make_prediction(features)
-        # prediction = model.predict(df)[0]
         if result == 1:
             output = "CHURN"
         else:
